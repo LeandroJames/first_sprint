@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`Products` (
   `idProducts` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Description` VARCHAR(45) NULL,
-  `Image` BLOB NULL,
+  `Image` BLOB,
   `Category (pizzas only)` VARCHAR(45) NULL,
   `Price` DECIMAL(5,2) NULL,
   PRIMARY KEY (`idProducts`))
