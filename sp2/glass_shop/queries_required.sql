@@ -4,6 +4,6 @@ SELECT * FROM ulleres_cul_ampolla.sales;
 SELECT * FROM ulleres_cul_ampolla.sales WHERE sold_by = "Aethelbert";
 
 SELECT suppliers.* FROM ulleres_cul_ampolla.suppliers
-WHERE suppliers.idSuppliers IN
-(SELECT glasses.Supplier_ID FROM ulleres_cul_ampolla.glasses
-WHERE glasses.idGlasses IN (SELECT sales.idGlasses FROM ulleres_cul_ampolla.sales));
+WHERE suppliers.SupplierID IN
+(SELECT glasses.SupplierID FROM ulleres_cul_ampolla.glasses
+WHERE glasses.GlassesID IN (SELECT sales.GlassesID FROM ulleres_cul_ampolla.sales));

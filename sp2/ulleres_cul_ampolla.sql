@@ -1,3 +1,0 @@
-CREATE SCHEMA Ulleres_cul_ampolla;
-
-CREATE SCHEMA IF NOT EXISTS `Ulleres_cul_ampolla` DEFAULT CHARACTER SET utf8 
