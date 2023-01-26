@@ -43,9 +43,34 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`Products` (
   `Name` VARCHAR(45) NULL,
   `Description` VARCHAR(45) NULL,
   `Image` BLOB,
+  `Type` SET("Burger", "Pizza", "Drink"),
   `Category (pizzas only)` VARCHAR(45) NULL,
   `Price` DECIMAL(5,2) NULL,
   PRIMARY KEY (`idProducts`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `Pizzeria`.`Order` (
+  `idOrder` INT NOT NULL,
+  `idCustomer` INT NULL,
+  `date` DATE NULL,
+  `time` TIME NULL,
+  `Type` SET("Delivery", "Collect") NULL,
+  `Total` INT NULL,
+  `Delivered by` INT NULL,
+  PRIMARY KEY (`idOrder`),
+  INDEX `idOrder_idx` (`IdOrder` ASC) VISIBLE,
+  INDEX `Delivered by_idx` (`Delivered by` ASC) VISIBLE,
+  INDEX `idCustomer_idx` (`idCustomer` ASC) VISIBLE,
+  CONSTRAINT `Delivered by`
+    FOREIGN KEY (`Delivered by`)
+    REFERENCES `Pizzeria`.`Employees` (`idEmployees`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `idCustomer`
+    FOREIGN KEY (`idCustomer`)
+    REFERENCES `Pizzeria`.`Customers` (`idCustomers`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Pizzeria`.`Order Item` (
@@ -59,35 +84,10 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`Order Item` (
     FOREIGN KEY (`idProduct`)
     REFERENCES `Pizzeria`.`Products` (`idProducts`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS `Pizzeria`.`Order` (
-  `idOrder` INT NOT NULL AUTO_INCREMENT,
-  `idCustomer` INT NULL,
-  `date` DATE NULL,
-  `time` TIME NULL,
-  `Type` SET("Delivery", "Collect") NULL,
-  `IdOrder Item` INT NULL,
-  `Total` INT NULL,
-  `Delivered by` INT NULL,
-  PRIMARY KEY (`idOrder`),
-  INDEX `idOrder Item_idx` (`IdOrder Item` ASC) VISIBLE,
-  INDEX `Delivered by_idx` (`Delivered by` ASC) VISIBLE,
-  INDEX `idCustomer_idx` (`idCustomer` ASC) VISIBLE,
-  CONSTRAINT `idOrder Item`
-    FOREIGN KEY (`IdOrder Item`)
-    REFERENCES `Pizzeria`.`Order Item` (`idOrder Item`)
-    ON DELETE NO ACTION
-    ON UPDATE CASCADE,
-  CONSTRAINT `Delivered by`
-    FOREIGN KEY (`Delivered by`)
-    REFERENCES `Pizzeria`.`Employees` (`idEmployees`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `idCustomer`
-    FOREIGN KEY (`idCustomer`)
-    REFERENCES `Pizzeria`.`Customers` (`idCustomers`)
+  CONSTRAINT `idOrder`
+    FOREIGN KEY (`idOrder`)
+    REFERENCES `Pizzeria`.`Order` (`idOrder`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
