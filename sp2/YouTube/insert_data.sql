@@ -1,0 +1,7 @@
+INSERT INTO youtube.users VALUES ("queen_elisabeth","dieu_et_mon_droit", "ellie@buckingham.co.uk", "1926-04-21", "F", "United Kingdom", "SW1A 1AA"), ("coletas_pablo", "PODEMOS", "piglesiasturrion@universidad.es", "1978-10-17", "M", "Spain", "28031"), ("aYusItaMaddrizz", "pecas_el_perro", "isabelayuso@comunidaddemadrid.es", "1978-10-17", "F", "Spain", "28001"), ("pamangoelmio", "motosmotos", "isacifu@email.es", "1964-07-01", "F", "Spain", "28001");
+
+SELECT * FROM youtube.users;
+
+INSERT INTO youtube.videos VALUES (1, "Yo de pinchos en pandemia", "Madrid siempre contra el comunismo", 15687, "bar_manolo", 165, 2, "Public", "aYusItaMaddrizz", "2020-05-22"), (2, "Yo y mis cremitas pal pelo", "Este supermercado es baratísimo", 190007, "no_publicar_peligro", 244, 7890, "Hidden", "pamangoelmio", "2020-05-22"), (3, "Dialéctica Kantiana de la coleta", "Exposición eterna sobre por qué me necesitáis, nunca me equivoqué y me rogaréis que vuelva cuando os deis cuenta de vuestro error", 8954878, "horatoria", 370, 0, "Public", "coletas_pablo", "2022-01-26"), (4, "España es Madrid", "Ya lo sabías. Y muerte al comunismo", 1489, "ole_y_ole", 199, 320, "Public", "aYusItaMaddrizz", "2021-03-15"), (5, "Mascarillas para todos", "No es corrupción porque las comprara mi hermano, ¡malpensados!", 630, "buena_tajada", 263, 890, "Public", "aYusItaMaddrizz", "2022-08-09");
+
+SELECT * FROM youtube.videos
