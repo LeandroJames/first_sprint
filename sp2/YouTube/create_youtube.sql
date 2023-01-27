@@ -6,8 +6,8 @@ CREATE TABLE IF NOT EXISTS `YouTube`.`Users` (
   `email` VARCHAR(45) NOT NULL,
   `date_of_birth` DATE NULL,
   `gender` SET("M", "F", "X") NULL,
-  `Country` VARCHAR(25) NULL,
-  `Postcode` VARCHAR(45) NULL,
+  `country` VARCHAR(25) NULL,
+  `postcode` VARCHAR(45) NULL,
   PRIMARY KEY (`username`))
 ENGINE = InnoDB;
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `YouTube`.`Subscriptions` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `YouTube`.`Videos` (
-  `idVideo` BIGINT NOT NULL,
+  `idVideo` BIGINT UNIQUE,
   `title` VARCHAR(45) NULL,
   `description` VARCHAR(140) NULL,
   `size` INT NULL,
@@ -65,31 +65,8 @@ CREATE TABLE IF NOT EXISTS `YouTube`.`Videos` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `YouTube`.`Likes` (
-  `idLike` INT NOT NULL,
-  `username` VARCHAR(45) NULL,
-  `idVideo` BIGINT NULL,
-  `idComment` INT NULL,
-  `liked` SET("Yes", "No") NULL,
-  `disliked` SET("Yes", "No") NULL,
-  `date` DATE NULL,
-  PRIMARY KEY (`idLike`),
-  INDEX `idVideo_idx` (`idVideo` ASC) VISIBLE,
-  INDEX `username_idx` (`username` ASC) VISIBLE,
-  CONSTRAINT `idVideo`
-    FOREIGN KEY (`idVideo`)
-    REFERENCES `YouTube`.`Videos` (`idVideo`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `liked_by`
-    FOREIGN KEY (`username`)
-    REFERENCES `YouTube`.`Users` (`username`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 CREATE TABLE IF NOT EXISTS `YouTube`.`Comments` (
-  `idComment` INT NOT NULL,
+  `idComment` INT UNIQUE,
   `idVideo` BIGINT NULL,
   `content` VARCHAR(120) NULL,
   `date` DATE NULL,
@@ -105,6 +82,35 @@ CREATE TABLE IF NOT EXISTS `YouTube`.`Comments` (
   CONSTRAINT `commented_video`
     FOREIGN KEY (`idVideo`)
     REFERENCES `YouTube`.`Videos` (`idVideo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `YouTube`.`Likes` (
+  `idLike` INT NOT NULL,
+  `username` VARCHAR(45) NULL,
+  `idVideo` BIGINT NULL,
+  `idComment` INT NULL,
+  `liked` SET("Yes", "No") NULL,
+  `disliked` SET("Yes", "No") NULL,
+  `date` DATE NULL,
+  PRIMARY KEY (`idLike`),
+  INDEX `idVideo_idx` (`idVideo` ASC) VISIBLE,
+  INDEX `username_idx` (`username` ASC) VISIBLE,
+  INDEX `comment_idx` (`idComment` ASC) VISIBLE,
+  CONSTRAINT `idVideo`
+    FOREIGN KEY (`idVideo`)
+    REFERENCES `YouTube`.`Videos` (`idVideo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `like_by`
+    FOREIGN KEY (`username`)
+    REFERENCES `YouTube`.`Users` (`username`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `comment`
+    FOREIGN KEY (`idComment`)
+    REFERENCES `YouTube`.`Comments` (`idComment`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -144,13 +150,33 @@ CREATE TABLE IF NOT EXISTS `YouTube`.`Playlist_contents` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `YouTube`.`Tags` (
-  `tag_name` VARCHAR(45) NOT NULL,
+  `idTag` INT NOT NULL,
+  `tag_name` VARCHAR(45) NULL,
   `idVideo` BIGINT NULL,
-  PRIMARY KEY (`tag_name`),
+  PRIMARY KEY (`idTag`),
   INDEX `idVideos_idx` (`idVideo` ASC) VISIBLE,
-  CONSTRAINT `tagged_video`
+  CONSTRAINT `idVideos`
     FOREIGN KEY (`idVideo`)
     REFERENCES `YouTube`.`Videos` (`idVideo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `YouTube`.`Channel_contents` (
+  `idChannel_contents` INT NOT NULL,
+  `idChannel` INT NULL,
+  `idVideo` BIGINT NULL,
+  PRIMARY KEY (`idChannel_contents`),
+  INDEX `idVideo_idx` (`idVideo` ASC) VISIBLE,
+  INDEX `Channel_idx` (`idChannel` ASC) VISIBLE,
+  CONSTRAINT `Channel videos`
+    FOREIGN KEY (`idVideo`)
+    REFERENCES `YouTube`.`Videos` (`idVideo`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `ChannelContents`
+    FOREIGN KEY (`idChannel`)
+    REFERENCES `YouTube`.`Channels` (`idChannel`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
