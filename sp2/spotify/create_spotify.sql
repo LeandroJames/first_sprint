@@ -1,56 +1,43 @@
 CREATE SCHEMA IF NOT EXISTS `spotify` DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`PayPal_details` (
-  `idPayPal` INT UNIQUE,
-  `username` VARCHAR(45) NULL,
-  UNIQUE INDEX `idPayPal_details_UNIQUE` (`idPayPal` ASC) VISIBLE,
-  PRIMARY KEY (`idPayPal`))
-ENGINE = InnoDB;
-
 CREATE TABLE IF NOT EXISTS `Spotify`.`Card_details` (
   `idCard` INT UNIQUE,
-  `Card_no` VARCHAR(45) NULL,
+  `Card_no` INT NULL,
   `Expiry_date` DATE NULL,
   `CVV` INT(3) UNSIGNED NULL,
   PRIMARY KEY (`idCard`),
   UNIQUE INDEX `idCard_details_UNIQUE` (`idCard` ASC) VISIBLE)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`Past_payments` (
-  `order_number` INT UNIQUE AUTO_INCREMENT,
-  `payment_method` SET("Card", "PayPal") NULL,
-  `date` DATE NULL,
-  `total` INT NULL,
-  PRIMARY KEY (`order_number`),
-  UNIQUE INDEX `idPast_payments_UNIQUE` (`order_number` ASC) VISIBLE)
-ENGINE = InnoDB;
-
 CREATE TABLE IF NOT EXISTS `Spotify`.`Subscriptions` (
-  `idSubscription` INT UNIQUE,
+  `idSubscription` INT NULL,
   `start_date` DATE NULL,
   `end_date` DATE NULL,
   `payment_method` SET("Card", "PayPal") NULL,
   `idCard` INT NULL,
   `idPayPal` INT NULL,
-  `past_payments` INT NULL,
-   PRIMARY KEY (`idSubscription`),
   UNIQUE INDEX `idCard_UNIQUE` (`idCard` ASC) VISIBLE,
   UNIQUE INDEX `idPayPal_UNIQUE` (`idPayPal` ASC) VISIBLE,
-  UNIQUE INDEX `past_payments_UNIQUE` (`past_payments` ASC) VISIBLE,
   UNIQUE INDEX `idSubscription_UNIQUE` (`idSubscription` ASC) VISIBLE,
   CONSTRAINT `pay_by_card`
     FOREIGN KEY (`idCard`)
     REFERENCES `Spotify`.`Card_details` (`idCard`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `pay_using_paypal`
-    FOREIGN KEY (`idPayPal`)
-    REFERENCES `Spotify`.`PayPal_details` (`idPayPal`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `previous_payments`
-    FOREIGN KEY (`past_payments`)
-    REFERENCES `Spotify`.`Past_payments` (`order_number`)
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `Spotify`.`Past_payments` (
+  `order_number` INT NOT NULL AUTO_INCREMENT,
+  `idSubscription` INT NULL,
+  `payment_method` SET("Card", "PayPal") NULL,
+  `date` DATE NULL,
+  `total` INT NULL,
+  PRIMARY KEY (`order_number`),
+  UNIQUE INDEX `idPast_payments_UNIQUE` (`order_number` ASC) VISIBLE,
+  INDEX `subscription number_idx` (`idSubscription` ASC) VISIBLE,
+  CONSTRAINT `subscription number`
+    FOREIGN KEY (`idSubscription`)
+    REFERENCES `Spotify`.`Subscriptions` (`idSubscription`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -67,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`Users` (
   `subscription_no` INT NULL,
   PRIMARY KEY (`username`),
   UNIQUE INDEX `Subscription no_UNIQUE` (`subscription_no` ASC) VISIBLE,
-  CONSTRAINT `subscription number`
+  CONSTRAINT `user subscription number`
     FOREIGN KEY (`subscription_no`)
     REFERENCES `Spotify`.`Subscriptions` (`idSubscription`)
     ON DELETE NO ACTION
@@ -78,12 +65,12 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`Artists` (
   `idArtists` INT UNIQUE,
   `name` VARCHAR(45) NOT NULL,
   `picture` BLOB NULL,
-  `realted_artists` INT NULL,
+  `related_artists` INT NULL,
   PRIMARY KEY (`idArtists`),
   UNIQUE INDEX `idArtists_UNIQUE` (`idArtists` ASC) VISIBLE,
-  UNIQUE INDEX `realted_artists_UNIQUE` (`realted_artists` ASC) VISIBLE,
+  UNIQUE INDEX `related_artists_UNIQUE` (`related_artists` ASC) VISIBLE,
   CONSTRAINT `similar_artists`
-    FOREIGN KEY (`realted_artists`)
+    FOREIGN KEY (`related_artists`)
     REFERENCES `Spotify`.`Artists` (`idArtists`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -110,8 +97,9 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Spotify`.`Albums` (
   `idAlbums` INT UNIQUE,
+  `name` VARCHAR(45),
   `idArtist` INT NULL,
-  `Year` VARCHAR(45) NULL,
+  `Year` INT(4) UNSIGNED NULL,
   `Cover` BLOB NULL,
   PRIMARY KEY (`idAlbums`),
   INDEX `album_artist_idx` (`idArtist` ASC) VISIBLE,
@@ -125,6 +113,7 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `Spotify`.`Songs` (
   `idSong` INT UNIQUE,
+  `name` VARCHAR(45),
   `idArtist` INT NOT NULL,
   `idAlbum` INT NOT NULL,
   `length` INT NULL,
@@ -145,12 +134,12 @@ CREATE TABLE IF NOT EXISTS `Spotify`.`Songs` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Spotify`.`Favourties` (
-  `idFavourties` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `Spotify`.`Favourites` (
+  `idFavourites` INT NOT NULL,
   `idSong` INT NULL,
   `idAlbum` INT NULL,
   `username` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idFavourties`),
+  PRIMARY KEY (`idFavourites`),
   UNIQUE INDEX `idSong_UNIQUE` (`idSong` ASC) VISIBLE,
   UNIQUE INDEX `idAlbum_UNIQUE` (`idAlbum` ASC) VISIBLE,
   INDEX `added_by_idx` (`username` ASC) VISIBLE,
