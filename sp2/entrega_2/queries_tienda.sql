@@ -39,8 +39,5 @@ SELECT producto.* FROM tienda.producto WHERE producto.codigo_fabricante IN ( SEL
 SELECT producto.* FROM tienda.producto WHERE producto.precio IN (SELECT MAX(producto.precio) FROM tienda.producto WHERE producto.codigo_fabricante IN (SELECT fabricante.codigo FROM tienda.fabricante WHERE nombre="Lenovo"));
 SELECT producto.nombre FROM tienda.producto WHERE producto.precio IN (SELECT MAX(producto.precio) FROM tienda.producto WHERE producto.codigo_fabricante IN (SELECT fabricante.codigo FROM tienda.fabricante WHERE nombre="Lenovo"));
 SELECT producto.nombre FROM tienda.producto WHERE producto.precio IN (SELECT MIN(producto.precio) FROM tienda.producto WHERE producto.codigo_fabricante IN (SELECT fabricante.codigo FROM tienda.fabricante WHERE nombre="Hewlett-Packard"));
-SELECT producto.* FROM tienda.producto WHERE producto.precio > (SELECT MAX(producto.precio) FROM tienda.producto WHERE producto.codigo_fabricante IN (SELECT fabricante.codigo FROM tienda.fabricante WHERE nombre="Lenovo"));
-
-
-SELECT * FROM tienda.fabricante;
-SELECT * FROM tienda.producto; 
+SELECT producto.* FROM tienda.producto WHERE producto.precio >= (SELECT MAX(producto.precio) FROM tienda.producto WHERE producto.codigo_fabricante IN (SELECT fabricante.codigo FROM tienda.fabricante WHERE nombre="Lenovo"));
+SELECT producto.* FROM tienda.producto WHERE producto.precio > (SELECT AVG (producto.precio) FROM tienda.producto);
