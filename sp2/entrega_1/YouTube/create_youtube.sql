@@ -8,8 +8,7 @@ CREATE TABLE IF NOT EXISTS `YouTube`.`Users` (
   `gender` SET("M", "F", "X") NULL,
   `country` VARCHAR(25) NULL,
   `postcode` VARCHAR(45) NULL,
-  PRIMARY KEY (`username`))
-ENGINE = InnoDB;
+  PRIMARY KEY (`username`));
 
 CREATE TABLE IF NOT EXISTS `YouTube`.`Channels` (
   `idChannel` INT NOT NULL,
@@ -23,8 +22,7 @@ CREATE TABLE IF NOT EXISTS `YouTube`.`Channels` (
     FOREIGN KEY (`created_by`)
     REFERENCES `YouTube`.`Users` (`username`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+    ON UPDATE NO ACTION);
 
 CREATE TABLE IF NOT EXISTS `YouTube`.`Subscriptions` (
   `idSubscription` INT NOT NULL,
@@ -142,11 +140,8 @@ CREATE TABLE IF NOT EXISTS `YouTube`.`Playlist_contents` (
     REFERENCES `YouTube`.`Videos` (`idVideo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `idPlaylist`
-    FOREIGN KEY (`idPlaylist`)
-    REFERENCES `YouTube`.`Playlists` (`idPlaylist`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  FOREIGN KEY (`idPlaylist`)
+    REFERENCES `YouTube`.`Playlists` (`idPlaylist`))
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `YouTube`.`Tags` (
