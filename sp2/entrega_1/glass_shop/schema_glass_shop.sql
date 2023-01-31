@@ -1,9 +1,9 @@
 DROP DATABASE IF EXISTS `Ulleres_cul_ampolla`;
 
-CREATE SCHEMA IF NOT EXISTS `Ulleres_cul_ampolla` DEFAULT CHARACTER SET utf8;
+CREATE SCHEMA `Ulleres_cul_ampolla` DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE
-    IF NOT EXISTS `Ulleres_cul_ampolla`.`Customers` (
+    `Ulleres_cul_ampolla`.`Customers` (
         `idCustomer` SMALLINT UNSIGNED NOT NULL,
         `Full name` VARCHAR(45) NULL,
         `Address` VARCHAR(45) NULL,
@@ -17,7 +17,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Ulleres_cul_ampolla`.`Suppliers` (
+    `Ulleres_cul_ampolla`.`Suppliers` (
         `idSuppliers` INT NOT NULL AUTO_INCREMENT,
         `Supplier name` VARCHAR(45) NULL,
         `Address` VARCHAR(45) NULL,
@@ -29,7 +29,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Ulleres_cul_ampolla`.`Brand suppliers` (
+    `Ulleres_cul_ampolla`.`Brand suppliers` (
         `Brand` VARCHAR(45) NOT NULL,
         `idSuppliers` INT NULL,
         PRIMARY KEY (`Brand`),
@@ -38,7 +38,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Ulleres_cul_ampolla`.`Glasses` (
+    `Ulleres_cul_ampolla`.`Glasses` (
         `idGlasses` SMALLINT UNSIGNED NOT NULL,
         `Brand` VARCHAR(45) NULL,
         `Frame type` SET('Wire', 'Thick', 'Rimless') NULL,
@@ -53,7 +53,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Ulleres_cul_ampolla`.`Sales` (
+    `Ulleres_cul_ampolla`.`Sales` (
         `Sale no` INT NOT NULL AUTO_INCREMENT,
         `Date` DATE NOT NULL,
         `idCustomer` SMALLINT UNSIGNED NULL,

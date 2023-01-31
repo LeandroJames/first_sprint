@@ -1,9 +1,9 @@
 DROP DATABASE IF EXISTS `Spotify`;
 
-CREATE SCHEMA IF NOT EXISTS `spotify` DEFAULT CHARACTER SET utf8;
+CREATE SCHEMA `spotify` DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Card_details` (
+    `Spotify`.`Card_details` (
         `idCard` INT UNIQUE,
         `Card_no` INT NULL,
         `Expiry_date` DATE NULL,
@@ -13,7 +13,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Subscriptions` (
+    `Spotify`.`Subscriptions` (
         `idSubscription` INT NULL,
         `start_date` DATE NULL,
         `end_date` DATE NULL,
@@ -27,7 +27,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Past_payments` (
+    `Spotify`.`Past_payments` (
         `order_number` INT NOT NULL AUTO_INCREMENT,
         `idSubscription` INT NULL,
         `payment_method` SET("Card", "PayPal") NULL,
@@ -40,7 +40,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Users` (
+    `Spotify`.`Users` (
         `username` VARCHAR(45) NOT NULL,
         `email` VARCHAR(45) NULL,
         `password` VARCHAR(45) NULL,
@@ -56,7 +56,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Artists` (
+    `Spotify`.`Artists` (
         `idArtists` INT UNIQUE,
         `name` VARCHAR(45) NOT NULL,
         `picture` BLOB NULL,
@@ -68,7 +68,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Following` (
+    `Spotify`.`Following` (
         `idfollowing` INT NOT NULL,
         `username` VARCHAR(45) NULL,
         `idArtists` INT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Albums` (
+    `Spotify`.`Albums` (
         `idAlbums` INT UNIQUE,
         `name` VARCHAR(45),
         `idArtist` INT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Songs` (
+    `Spotify`.`Songs` (
         `idSong` INT UNIQUE,
         `name` VARCHAR(45),
         `idArtist` INT NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Favourites` (
+    `Spotify`.`Favourites` (
         `idFavourites` INT NOT NULL,
         `idSong` INT NULL,
         `idAlbum` INT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Playlists` (
+    `Spotify`.`Playlists` (
         `idPlaylist` INT NOT NULL,
         `name` VARCHAR(45) NULL,
         `created_on` DATE NULL,
@@ -136,7 +136,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `Spotify`.`Playlist_contents` (
+    `Spotify`.`Playlist_contents` (
         `idPlaylist_contents` INT NOT NULL,
         `idPlaylist` INT NOT NULL,
         `idSong` INT NOT NULL,

@@ -1,8 +1,8 @@
 DROP DATABASE IF EXISTS `Pizzeria`;
 
-CREATE SCHEMA IF NOT EXISTS `Pizzeria` DEFAULT CHARACTER SET utf8;
+CREATE SCHEMA `Pizzeria` DEFAULT CHARACTER SET utf8;
 
-CREATE TABLE IF NOT EXISTS `Pizzeria`.`Branches` (
+CREATE TABLE `Pizzeria`.`Branches` (
   `idBranches` INT NOT NULL,
   `Address` VARCHAR(45) NULL,
   `Postcode` INT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`Branches` (
   PRIMARY KEY (`idBranches`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Pizzeria`.`Employees` (
+CREATE TABLE `Pizzeria`.`Employees` (
   `idEmployees` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Surname` VARCHAR(45) NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`Employees` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Pizzeria`.`Customers` (
+CREATE TABLE `Pizzeria`.`Customers` (
   `idCustomers` INT NOT NULL,
   `Name` VARCHAR(25) NULL,
   `Surname` VARCHAR(30) NULL,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`Customers` (
   PRIMARY KEY (`idCustomers`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Pizzeria`.`Products` (
+CREATE TABLE `Pizzeria`.`Products` (
   `idProducts` INT NOT NULL,
   `Name` VARCHAR(45) NULL,
   `Description` VARCHAR(45) NULL,
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`Products` (
   PRIMARY KEY (`idProducts`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Pizzeria`.`Order` (
+CREATE TABLE `Pizzeria`.`Order` (
   `idOrder` INT NOT NULL,
   `idCustomer` INT NULL,
   `date` DATE NULL,
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `Pizzeria`.`Order` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `Pizzeria`.`Order Item` (
+CREATE TABLE `Pizzeria`.`Order Item` (
   `idOrder Item` INT NOT NULL,
   `idOrder` INT NULL,
   `idProduct` INT NULL,
