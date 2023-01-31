@@ -1,9 +1,9 @@
 DROP DATABASE IF EXISTS `youtube`;
 
-CREATE SCHEMA IF NOT EXISTS `youtube` DEFAULT CHARACTER SET utf8;
+CREATE SCHEMA `youtube` DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Users` (
+    `YouTube`.`Users` (
         `username` VARCHAR(45) NOT NULL,
         `password` VARCHAR(45) NOT NULL,
         `email` VARCHAR(45) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Channels` (
+    `YouTube`.`Channels` (
         `idChannel` INT NOT NULL,
         `name` VARCHAR(45) NULL,
         `description` VARCHAR(140) NULL,
@@ -27,7 +27,7 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Subscriptions` (
+    `YouTube`.`Subscriptions` (
         `idSubscription` INT NOT NULL,
         `username` VARCHAR(45) NULL,
         `channel` INT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Videos` (
+    `YouTube`.`Videos` (
         `idVideo` BIGINT UNIQUE,
         `title` VARCHAR(45) NULL,
         `description` VARCHAR(140) NULL,
@@ -56,7 +56,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Comments` (
+    `YouTube`.`Comments` (
         `idComment` INT UNIQUE,
         `idVideo` BIGINT NULL,
         `content` VARCHAR(120) NULL,
@@ -70,7 +70,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Likes` (
+    `YouTube`.`Likes` (
         `idLike` INT NOT NULL,
         `username` VARCHAR(45) NULL,
         `idVideo` BIGINT NULL,
@@ -88,7 +88,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Playlists` (
+    `YouTube`.`Playlists` (
         `idPlaylist` INT NOT NULL,
         `name` VARCHAR(45) NULL,
         `created_on` DATE NULL,
@@ -100,7 +100,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Playlist_contents` (
+    `YouTube`.`Playlist_contents` (
         `idPlaylist_content` INT NOT NULL,
         `idPlaylist` INT NULL,
         `idVideo` BIGINT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Tags` (
+    `YouTube`.`Tags` (
         `idTag` INT NOT NULL,
         `tag_name` VARCHAR(45) NULL,
         `idVideo` BIGINT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE
     ) ENGINE = InnoDB;
 
 CREATE TABLE
-    IF NOT EXISTS `YouTube`.`Channel_contents` (
+    `YouTube`.`Channel_contents` (
         `idChannel_contents` INT NOT NULL,
         `idChannel` INT NULL,
         `idVideo` BIGINT NULL,
