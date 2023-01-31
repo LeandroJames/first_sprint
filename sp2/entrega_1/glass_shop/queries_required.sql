@@ -16,11 +16,14 @@ WHERE
             ulleres_cul_ampolla.`brand suppliers`
         WHERE
             `brand suppliers`.Brand IN (
-                SELECT glasses.`Brand`
+                SELECT
+                    glasses.`Brand`
                 FROM
                     ulleres_cul_ampolla.glasses
-                WHERE glasses.idGlasses IN (
-                        SELECT sales.idGlasses
+                WHERE
+                    glasses.idGlasses IN (
+                        SELECT
+                            sales.idGlasses
                         FROM
                             ulleres_cul_ampolla.sales
                     )
