@@ -1,4 +1,4 @@
-Primero hay que meter todos los datos. Para ello, es necesario abrir MongoDB compass y desde allí se puede añadir el fichero. A continuación están las queries requeridas por el enunciado. Se ha dejado un espacio en blanco para que la línea de cada query coincida con la de su enunciado en el readme.
+Primero hay que meter todos los datos. Para ello, es necesario abrir MongoDB compass y desde allí se puede añadir el fichero. La base de datos se llama 'new_york_restaurants' y la colección a la que se han de añadir los documentos 'restaurants'. A continuación están las queries requeridas por el enunciado. Se ha dejado un espacio en blanco para que la línea de cada query coincida con la de su enunciado en el readme. Las consultas están todas comentadas y es necesario descomentarlas para irlas ejecutando. 
 
 
 Escriu una consulta per mostrar tots els documents en la col·lecció Restaurants.

@@ -1,5 +1,5 @@
-const database = 'new_york_restaurants';
-use(database);
+use('new_york_restaurants');
+
 
 //db.restaurants.find();
 //db.restaurants.find({}, {restaurant_id: 1, name: 1, borough:1, cuisine: 1});
@@ -28,41 +28,8 @@ use(database);
 //db.restaurants.find().sort({name:1});
 //db.restaurants.find().sort({name:-1});
 //db.restaurants.find().sort({cuisine:1, borough:-1});
-
-
-
-
-
-//: [{"grades.date": }, {"grades.grade": "A"}, {"grades.score": 11}]}, {name: /^Wil/}]}, {restaurant_id:1, name:1, grades:1});
-
-
-
-//{ results: { $elemMatch: { $gte: 80, $lt: 85 } } 
-
-
-
-//db.restaurants.find()
-
-
-
-//db.inventory.find( { "size.uom": "in" } )
-//db.foo.find({ bar : "xyz" } , { my_array : { $slice : [n , 1] } } )
- //$last
-
-//{"coord": -73.856077}});
-
-
-// // Run a find command to view items sold on April 4th, 2014.
-// db.sales.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
-
-
-// // Build an aggregation to view total sales for each product in 2014.
-// const aggregation = [
-//   { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
-//   { $group: { _id: '$item', totalSaleAmount: { $sum: { $multiply: [ '$price', '$quantity' ] } } } }
-// ];
-
-// // Run the aggregation and open a cursor to the results.
-// // Use toArray() to exhaust the cursor to return the whole result set.
-// // You can use hasNext()/next() to iterate through the cursor page by page.
-// db.sales.aggregate(aggregation);
+//db.restaurants.find({"address.street": {$exists: true}});
+//db.restaurants.find( {"address.coord": { $type: "double"}});
+//db.restaurants.find({"grades.score": {$mod: [7, 0]}}, {restaurant_id: 1, name: 1, "grades.grade": 1});
+//db.restaurants.find({name: /mon/}, {name:1, borough: 1, "address.coord": 1, cuisine: 1});
+//db.restaurants.find({name: /^Mad/}, {name:1, borough: 1, "address.coord": 1, cuisine: 1});
