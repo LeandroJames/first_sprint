@@ -1,0 +1,68 @@
+const database = 'new_york_restaurants';
+use(database);
+
+//db.restaurants.find();
+//db.restaurants.find({}, {restaurant_id: 1, name: 1, borough:1, cuisine: 1});
+//db.restaurants.find({}, {restaurant_id: 1, name: 1, borough:1, cuisine: 1, _id: 0});
+//db.restaurants.find({}, {restaurant_id: 1, name: 1, borough:1, address: {zipcode: 1}, _id: 0});
+//db.restaurants.find({borough: "Bronx"});
+//db.restaurants.find({borough: "Bronx"}).limit(5);
+//db.restaurants.find({borough: "Bronx"}).limit(5).skip(5);
+//db.restaurants.find({"grades.score": {$gt: 90}});
+//db.restaurants.find({"grades": {$elemMatch: {score: {$gt: 80, $lte: 100}}}});
+//db.restaurants.find({"address.coord.0": {$lte: -95.754168}});
+//db.restaurants.find({$and: [{"grades.score": {$gt: 70}}, {"address.coord.1": {$lte: -65.754168}}, {cuisine: {$not: /^American.*/}}]});
+//db.restaurants.aggregate([{$match: {"grades.score": {$gt: 70}}}, {$match: {"address.coord.0": {$lte: -65.754168}}}, {$match: {cuisine: {$not: /^American.*/}}}]);
+//db.restaurants.aggregate([{$match: {"grades.grade": "A"}}, {$match: {borough : "Brooklyn"}}, {$match: {cuisine: {$not: /^American.*/}}}]).sort({cuisine: 1});
+//db.restaurants.find({name: /^Wil/}, {restaurant_id:1, name:1, borough:1, cuisine:1});
+//db.restaurants.find({name: /ces$/}, {restaurant_id:1, name:1, borough:1, cuisine:1});
+//db.restaurants.find({name: /Reg/}, {restaurant_id:1, name:1, borough:1, cuisine:1});
+//db.restaurants.find({$and: [{borough: "Bronx"},  {cuisine: {$in: [/^American/, "Chinese"]}}]});
+//db.restaurants.find({borough: {$in: ["Staten Island", "Queens", "Bronx", "Brooklyn"]}}, {restaurant_id:1, name:1, borough:1, cuisine:1});
+//db.restaurants.find({borough: {$nin: ["Staten Island", "Queens", "Bronx", "Brooklyn"]}}, {restaurant_id:1, name:1, borough:1, cuisine:1});
+//db.restaurants.find({"grades.score": {$lt: 10}}, {restaurant_id:1, name:1, borough:1, cuisine:1});
+//db.restaurants.find({$or: [{$and: [{cuisine: "Seafood"}, {cuisine: {$nin: [/^American/, "Chinese"]}}]}, {name: /^Wil/}]}, {restaurant_id:1, name:1, borough:1, cuisine:1});
+//db.restaurants.find({grades: {$elemMatch: {date: new Date("2014-08-11T00:00:00Z"), grade: "A", score: 11}}});
+//db.restaurants.find({"grades.1": {date: new Date("2014-08-11T00:00:00Z"), grade: "A", score: 9}});
+//db.restaurants.find({"address.coord.1": {$lte: 52, $gte: 42}}, {restaurant_id: 1, name: 1, address: 1});
+//db.restaurants.find().sort({name:1});
+//db.restaurants.find().sort({name:-1});
+//db.restaurants.find().sort({cuisine:1, borough:-1});
+
+
+
+
+
+//: [{"grades.date": }, {"grades.grade": "A"}, {"grades.score": 11}]}, {name: /^Wil/}]}, {restaurant_id:1, name:1, grades:1});
+
+
+
+//{ results: { $elemMatch: { $gte: 80, $lt: 85 } } 
+
+
+
+//db.restaurants.find()
+
+
+
+//db.inventory.find( { "size.uom": "in" } )
+//db.foo.find({ bar : "xyz" } , { my_array : { $slice : [n , 1] } } )
+ //$last
+
+//{"coord": -73.856077}});
+
+
+// // Run a find command to view items sold on April 4th, 2014.
+// db.sales.find({ date: { $gte: new Date('2014-04-04'), $lt: new Date('2014-04-05') } });
+
+
+// // Build an aggregation to view total sales for each product in 2014.
+// const aggregation = [
+//   { $match: { date: { $gte: new Date('2014-01-01'), $lt: new Date('2015-01-01') } } },
+//   { $group: { _id: '$item', totalSaleAmount: { $sum: { $multiply: [ '$price', '$quantity' ] } } } }
+// ];
+
+// // Run the aggregation and open a cursor to the results.
+// // Use toArray() to exhaust the cursor to return the whole result set.
+// // You can use hasNext()/next() to iterate through the cursor page by page.
+// db.sales.aggregate(aggregation);
