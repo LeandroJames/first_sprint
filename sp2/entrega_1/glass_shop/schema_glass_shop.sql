@@ -171,50 +171,50 @@ INSERT INTO
         `Price`
     )
 VALUES (
-        '1',
+        1,
         'RayBan',
         'Wire',
         '2',
         '1',
         'Silver',
         'none',
-        '160'
+        160
     ), (
-        '2',
+        2,
         'Police',
         'Rimless',
         '1',
         '1',
         'Gold',
         'none',
-        '140'
+        140
     ), (
         3,
         "RayBan",
         "Rimless",
-        "2",
-        "1",
+        2,
+        1,
         "Black",
         "none",
-        "150"
+        150
     ), (
-        '4',
+        4,
         'Sting',
         'Thick',
-        '3',
-        '3',
+        3,
+        3,
         'Black',
         'none',
-        '120'
+        120
     ), (
-        '5',
+        5,
         'Sting',
         'Rimless',
-        '7',
-        '6',
+        7,
+        6,
         'Blue',
         'none',
-        '90'
+        90
     );
 
 INSERT INTO
@@ -228,31 +228,31 @@ INSERT INTO
 VALUES (
         1,
         "2023-01-24",
-        "1",
-        "1",
+        1,
+        1,
         "Aethelbert"
     ), (
         2,
         "2022-12-27",
-        "2",
-        "1",
+        2,
+        1,
         "Aethelbert"
     ), (
         3,
         "2022-12-22",
-        "1",
-        "1",
+        1,
+        1,
         "Aethelbert"
     ), (
         4,
         "2023-01-24",
-        "3",
-        "5",
+        3,
+        5,
         "Cuthbert"
     ), (
         5,
         "2023-01-24",
-        "4",
-        "2",
+        4,
+        2,
         "Cuthbert"
     );
