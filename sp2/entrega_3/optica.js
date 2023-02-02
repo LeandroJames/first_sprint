@@ -1,14 +1,6 @@
 const { MongoClient, ObjectId } = require("mongodb");
-// Connection URI
-const uri = "mongodb://localhost:27017/?maxPoolSize=20&w=majority";
-// Create a new MongoClient
+const uri = "mongodb://localhost:27017";
 const client = new MongoClient(uri);
-
-const listDatabases = async (client) => {
-  const databaseList = await client.db().admin().listDatabases();
-  console.log("Current databases:");
-  databaseList.databases.forEach((database) => console.log(database));
-};
 
 const suppliers = [
   {
@@ -92,7 +84,6 @@ const customers = [
   }]
   },
   {
-    _id: 3,
     name: "Paula Fernández",
     address: "C/ Còrsega 10, 4A",
     postcode: "08014",
@@ -116,7 +107,6 @@ const customers = [
     ],
   },
   {
-    _id: 4,
     name: "Eusebio de la Gran",
     address: "C/ Diputació 140, Principal",
     postcode: "08010",
@@ -139,7 +129,6 @@ const customers = [
   ),]
   },
   {
-    _id: 5,
     name: "Jordi Coromines",
     address: "C/ Girona 10, 6C",
     postcode: "08021",
@@ -168,11 +157,12 @@ const customers = [
 
 const addCustomers = async (client, customers) => {
   await client.db("optica").collection("customers").insertMany(customers);
+  console.log("Customers successfully added to database")
 };
 
 const addSuppliers = async (client, suppliers) => {
-  await client.db("optica").dropDatabase();
   await client.db("optica").collection("suppliers").insertMany(suppliers);
+  console.log("Suppliers successfully added to database")
 };
 
 const main = async () => {
@@ -180,7 +170,11 @@ const main = async () => {
     await client.connect();
     await client.db("admin").command({ ping: 1 });
     console.log("Connected successfully to server");
-    await client.db("optica").dropDatabase();
+    const databases= await client.db().admin().listDatabases()
+    let optica_exists = databases.databases.filter((element)=>element.name === "optica")
+    if (optica_exists) {
+       await client.db("optica").dropDatabase();
+    }
     await addCustomers(client, customers);
     await addSuppliers(client, suppliers);
   } finally {
