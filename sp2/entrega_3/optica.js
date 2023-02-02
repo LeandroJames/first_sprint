@@ -12,70 +12,24 @@ const listDatabases = async (client) => {
 
 const suppliers = [
   {
-    _id: ObjectId("s00000000000000000000001"),
+    _id: new ObjectId(100000000000000000000001),
     name: "Gafas molongas",
     address: "C/ València 189, 6A, 08020 Barcelona",
     phone_no: "559684268",
     fax: "559684268",
     NIF: "PO89549516",
-    glasses_supplied: [ObjectId("g00000000000000000000001"), ObjectId("g00000000000000000000003")]
+    glasses_supplied: [new ObjectId(200000000000000000000001), new ObjectId(200000000000000000000003), new ObjectId(200000000000000000000004), new ObjectId(200000000000000000000005)]
   },
   {
-     _id: ObjectId("s00000000000000000000002"),
+     _id: new ObjectId(100000000000000000000002),
       name: "Lunettes Lunaires",
       address: "C/ de França 15, 16020 Figueres",
       phone_no: "984775214",
       fax: "984775214",
       NIF: "8989962224",
-      glasses_supplied: [ObjectId("g00000000000000000000002")]
+      glasses_supplied: [new ObjectId(200000000000000000000002), new ObjectId(200000000000000000000006)]
     },
   ]
-  {
-    _id: ObjectId("g00000000000000000000003"),
-    brand: "RayBan",
-    frame_type: "Rimless",
-    graduation_LR: [2, 1],
-    frame_colour: "black",
-    lense_colour: "none",
-    price: 150,
-    supplier: {
-      _id: 1,
-      name: "Gafas molongas",
-      address: "C/ València 189, 6A, 08020 Barcelona",
-      phone_no: "559684268",
-      fax: "559684268",
-      NIF: "PO89549516",
-    },
-  },
-  {
-   ,
-    supplier: {
-      _id: 1,
-      name: "Gafas molongas",
-      address: "C/ València 189, 6A, 08020 Barcelona",
-      phone_no: "559684268",
-      fax: "559684268",
-      NIF: "PO89549516",
-    },
-  },
-  {
-    _id: ObjectId("g00000000000000000000005"),
-    brand: "Sting",
-    frame_type: "Rimless",
-    graduation_LR: [7, 6],
-    frame_colour: "blue",
-    lense_colour: "none",
-    price: 90,
-    supplier: {
-      _id: 1,
-      name: "Gafas molongas",
-      address: "C/ València 189, 6A, 08020 Barcelona",
-      phone_no: "559684268",
-      fax: "559684268",
-      NIF: "PO89549516",
-    },
-  },
-];
 
 const customers = [
   {
@@ -90,7 +44,7 @@ const customers = [
       {
         date: "2023-01-24",
         glasses: {
-          _id: ObjectId("g00000000000000000000001"),
+          _id: new ObjectId(200000000000000000000001),
           brand: "RayBan",
           frame_type: "Wire",
           graduation_LR: [2, 1],
@@ -103,7 +57,7 @@ const customers = [
       {
         date: "2022-12-22",
         glasses:{
-          _id: ObjectId("g00000000000000000000003"),
+          _id: new ObjectId(200000000000000000000003),
           brand: "RayBan",
           frame_type: "Rimless",
           graduation_LR: [2, 1],
@@ -126,7 +80,7 @@ const customers = [
     purchases: [
         {date: "2022-12-27",
         glasses: {
-          _id: ObjectId("g00000000000000000000002"),
+          _id: new ObjectId(200000000000000000000002),
           brand: "Police",
           frame_type: "Rimless",
           graduation_LR: [1, 1],
@@ -147,9 +101,9 @@ const customers = [
     email: "paulafernandez@email.com",
     signup_date: "2022-10-12",
     purchases: [
-      {date: "2023-01",
+      {date: "2023-01-22",
       glasses: {
-        _id: ObjectId("g00000000000000000000005"),
+        _id: new ObjectId(200000000000000000000005),
         brand: "Sting",
         frame_type: "Rimless",
         graduation_LR: [7, 6],
@@ -169,7 +123,20 @@ const customers = [
     city: "Barcelona",
     phone_no: "931566648",
     signup_date: "2023-01-09",
-    purchases: [],
+    purchases: [(
+      {date: "2023-01-22",
+      glasses: {
+        _id: new ObjectId(200000000000000000000004),
+        brand: "Sting",
+        frame_type: "thick",
+        graduation_LR: [3, 3],
+        frame_colour: "black",
+        lense_colour: "none",
+        price: 120,
+      },
+      sold_by: "Cuthbert"
+    }
+  ),]
   },
   {
     _id: 5,
@@ -181,26 +148,42 @@ const customers = [
     email: "coromines_jordi@email.com",
     signup_date: "2022-07-05",
     referred_by: 3,
-    purchases: [],
+    purchases: [(
+        {date: "2023-01-29",
+        glasses: {
+          _id: new ObjectId(200000000000000000000006),
+          brand: "Police",
+          frame_type: "wire",
+          graduation_LR: [6, 5],
+          frame_colour: "black",
+          lense_colour: "none",
+          price: 140,
+        },
+        sold_by: "Cuthbert"
+      }
+    ),
+    ],
   },
 ];
 
-const addGlasses = async (client, glasses) => {
+const addCustomers = async (client, customers) => {
+  await client.db("optica").collection("customers").insertMany(customers);
+};
+
+const addSuppliers = async (client, suppliers) => {
   await client.db("optica").dropDatabase();
-  await client.db("optica").collection("glasses").insertMany(glasses);
+  await client.db("optica").collection("suppliers").insertMany(suppliers);
 };
 
 const main = async () => {
   try {
-    // Connect the client to the server (optional starting in v4.7)
     await client.connect();
-    // // Establish and verify connection
     await client.db("admin").command({ ping: 1 });
     console.log("Connected successfully to server");
     await client.db("optica").dropDatabase();
-    await addGlasses(client, glasses);
+    await addCustomers(client, customers);
+    await addSuppliers(client, suppliers);
   } finally {
-    // Ensures that the client will close when you finish/error
     await client.close();
   }
 };
