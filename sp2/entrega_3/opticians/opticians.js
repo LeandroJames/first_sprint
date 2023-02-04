@@ -31,10 +31,10 @@ const customers = [
     city: "Barcelona",
     phone_no: "689487556",
     email: "juanperez@email.com",
-    signup_date: "2022-10-2",
+    signup_date: new Date("2022-10-2"),
     purchases: [
       {
-        date: "2023-01-24",
+        date: new Date("2023-01-24"),
         glasses: {
           _id: new ObjectId(200000000000000000000001),
           brand: "RayBan",
@@ -47,7 +47,7 @@ const customers = [
         sold_by: "Aethelbert",
       },
       {
-        date: "2022-12-22",
+        date: new Date("2022-12-22"),
         glasses:{
           _id: new ObjectId(200000000000000000000003),
           brand: "RayBan",
@@ -68,9 +68,9 @@ const customers = [
     city: "Barcelona",
     phone_no: "698874126",
     email: "albalvarez@email.com",
-    signup_date: "2022-08-20",
+    signup_date: new Date("2022-08-20"),
     purchases: [
-        {date: "2022-12-27",
+        {date: new Date ("2022-12-27"),
         glasses: {
           _id: new ObjectId(200000000000000000000002),
           brand: "Police",
@@ -90,9 +90,9 @@ const customers = [
     city: "Barcelona",
     phone_no: "674411283",
     email: "paulafernandez@email.com",
-    signup_date: "2022-10-12",
+    signup_date: new Date("2022-10-12"),
     purchases: [
-      {date: "2023-01-22",
+      {date: new Date("2023-01-22"),
       glasses: {
         _id: new ObjectId(200000000000000000000005),
         brand: "Sting",
@@ -112,9 +112,9 @@ const customers = [
     postcode: "08010",
     city: "Barcelona",
     phone_no: "931566648",
-    signup_date: "2023-01-09",
+    signup_date: new Date("2023-01-09"),
     purchases: [(
-      {date: "2023-01-22",
+      {date: new Date ("2023-01-22"),
       glasses: {
         _id: new ObjectId(200000000000000000000004),
         brand: "Sting",
@@ -135,10 +135,10 @@ const customers = [
     city: "Barcelona",
     phone_no: "689547887",
     email: "coromines_jordi@email.com",
-    signup_date: "2022-07-05",
+    signup_date: new Date("2022-07-05"),
     referred_by: 3,
     purchases: [(
-        {date: "2023-01-29",
+        {date: new Date("2023-01-29"),
         glasses: {
           _id: new ObjectId(200000000000000000000006),
           brand: "Police",
@@ -152,16 +152,16 @@ const customers = [
       }
     ),
     ],
-  },
+  }
 ];
 
 const addCustomers = async (client, customers) => {
-  await client.db("optica").collection("customers").insertMany(customers);
+  await client.db("otpicians").collection("customers").insertMany(customers);
   console.log("Customers successfully added to database")
 };
 
 const addSuppliers = async (client, suppliers) => {
-  await client.db("optica").collection("suppliers").insertMany(suppliers);
+  await client.db("opticians").collection("suppliers").insertMany(suppliers);
   console.log("Suppliers successfully added to database")
 };
 
@@ -171,9 +171,9 @@ const main = async () => {
     await client.db("admin").command({ ping: 1 });
     console.log("Connected successfully to server");
     const databases= await client.db().admin().listDatabases()
-    let optica_exists = databases.databases.filter((element)=>element.name === "optica")
-    if (optica_exists) {
-       await client.db("optica").dropDatabase();
+    let opticians_exists = databases.databases.filter((element)=>element.name === "opticians")
+    if (opticians_exists) {
+       await client.db("opticians").dropDatabase();
     }
     await addCustomers(client, customers);
     await addSuppliers(client, suppliers);
