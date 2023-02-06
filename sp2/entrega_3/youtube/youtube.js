@@ -1,6 +1,6 @@
-const { MongoClient, ObjectId } = require("mongodb");
-const uri = "mongodb://localhost:27017";
-const client = new MongoClient(uri);
+// const { MongoClient, ObjectId } = require("mongodb");
+// const uri = "mongodb://localhost:27017";
+// const client = new MongoClient(uri);
 
 const users = [
   {
@@ -196,28 +196,28 @@ const users = [
   },
 ];
 
-//db.youtube.users.insertMany(users)
+db.youtube.users.insertMany(users)
 
-const addUsers = async (client, users) => {
-  await client.db("youtube").collection("users").insertMany(users);
-  console.log("Users successfully added to database");
-};
+// const addUsers = async (client, users) => {
+//   await client.db("youtube").collection("users").insertMany(users);
+//   console.log("Users successfully added to database");
+// };
 
-const main = async () => {
-  try {
-    await client.connect();
-    await client.db("admin").command({ ping: 1 });
-    console.log("Connected successfully to server");
-    const databases = await client.db().admin().listDatabases();
-    let youtube_exists = databases.databases.filter(
-      (element) => element.name === "youtube"
-    );
-    if (youtube_exists) {
-      await client.db("youtube").dropDatabase();
-    }
-    await addUsers(client, users);
-  } finally {
-    await client.close();
-  }
-};
-main().catch(console.dir);
+// const main = async () => {
+//   try {
+//     await client.connect();
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Connected successfully to server");
+//     const databases = await client.db().admin().listDatabases();
+//     let youtube_exists = databases.databases.filter(
+//       (element) => element.name === "youtube"
+//     );
+//     if (youtube_exists) {
+//       await client.db("youtube").dropDatabase();
+//     }
+//     await addUsers(client, users);
+//   } finally {
+//     await client.close();
+//   }
+// };
+// main().catch(console.dir);
