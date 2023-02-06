@@ -45,7 +45,7 @@ CREATE TABLE
         `description` VARCHAR(140) NULL,
         `size` INT NULL,
         `file_name` VARCHAR(45) NULL,
-        `legth` INT NULL,
+        `length` INT NULL,
         `times_played` INT NULL,
         `status` SET("Public", "Hidden", "Private") NULL,
         `published_by` VARCHAR(45) NULL,
@@ -253,7 +253,7 @@ SELECT * FROM youtube.`channel_contents`;
 
 INSERT INTO
     youtube.subscriptions
-VALUES (1, "aYusItaMaddrizz", 1), (2, "aYusItaMaddrizz", 1), (3, "coletas_pablo", 1), (4, "pamangoelmio", 1);
+VALUES (1, "aYusItaMaddrizz", 1), (2, "coletas_pablo", 1), (3, "pamangoelmio", 1);
 
 SELECT * FROM youtube.subscriptions;
 

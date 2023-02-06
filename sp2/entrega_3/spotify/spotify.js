@@ -1,6 +1,6 @@
-const { MongoClient, ObjectId } = require("mongodb");
-const uri = "mongodb://localhost:27017";
-const client = new MongoClient(uri);
+// const { MongoClient, ObjectId } = require("mongodb");
+// const uri = "mongodb://localhost:27017";
+// const client = new MongoClient(uri);
 
 const artists = [
   {
@@ -301,32 +301,34 @@ const users = [
   },
 ];
 
-const addArtists = async (client, artists) => {
-  await client.db("spotify").collection("artists").insertMany(artists);
-  console.log("Artists successfully added to database");
-};
+db.artists.insertMany(artists);
 
-const addUsers = async (client, users) => {
-  await client.db("spotify").collection("users").insertMany(users);
-  console.log("Users successfully added to database");
-};
+// const addArtists = async (client, artists) => {
+//   await client.db("spotify").collection("artists").insertMany(artists);
+//   console.log("Artists successfully added to database");
+// };
 
-const main = async () => {
-  try {
-    await client.connect();
-    await client.db("admin").command({ ping: 1 });
-    console.log("Connected successfully to server");
-    const databases = await client.db().admin().listDatabases();
-    let spotify_exists = databases.databases.filter(
-      (element) => element.name === "spotify"
-    );
-    if (spotify_exists) {
-      await client.db("spotify").dropDatabase();
-    }
-    await addArtists(client, artists);
-    await addUsers(client, users);
-  } finally {
-    await client.close();
-  }
-};
-main().catch(console.dir);
+// const addUsers = async (client, users) => {
+//   await client.db("spotify").collection("users").insertMany(users);
+//   console.log("Users successfully added to database");
+// };
+
+// const main = async () => {
+//   try {
+//     await client.connect();
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Connected successfully to server");
+//     const databases = await client.db().admin().listDatabases();
+//     let spotify_exists = databases.databases.filter(
+//       (element) => element.name === "spotify"
+//     );
+//     if (spotify_exists) {
+//       await client.db("spotify").dropDatabase();
+//     }
+//     await addArtists(client, artists);
+//     await addUsers(client, users);
+//   } finally {
+//     await client.close();
+//   }
+// };
+// main().catch(console.dir);
