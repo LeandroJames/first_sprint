@@ -1,27 +1,35 @@
-const { MongoClient, ObjectId } = require("mongodb");
-const uri = "mongodb://localhost:27017";
-const client = new MongoClient(uri);
+// const { MongoClient, ObjectId } = require("mongodb");
+// const uri = "mongodb://localhost:27017";
+// const client = new MongoClient(uri);
 
 const suppliers = [
   {
-    _id: new ObjectId(100000000000000000000001),
+    _id: new ObjectId("100000000000000000000001"),
     name: "Gafas molongas",
     address: "C/ València 189, 6A, 08020 Barcelona",
     phone_no: "559684268",
     fax: "559684268",
     NIF: "PO89549516",
-    glasses_supplied: [new ObjectId(200000000000000000000001), new ObjectId(200000000000000000000003), new ObjectId(200000000000000000000004), new ObjectId(200000000000000000000005)]
+    glasses_supplied: [
+      new ObjectId("200000000000000000000001"),
+      new ObjectId("200000000000000000000003"),
+      new ObjectId("200000000000000000000004"),
+      new ObjectId("200000000000000000000005"),
+    ],
   },
   {
-     _id: new ObjectId(100000000000000000000002),
-      name: "Lunettes Lunaires",
-      address: "C/ de França 15, 16020 Figueres",
-      phone_no: "984775214",
-      fax: "984775214",
-      NIF: "8989962224",
-      glasses_supplied: [new ObjectId(200000000000000000000002), new ObjectId(200000000000000000000006)]
-    },
-  ]
+    _id: new ObjectId("100000000000000000000002"),
+    name: "Lunettes Lunaires",
+    address: "C/ de França 15, 16020 Figueres",
+    phone_no: "984775214",
+    fax: "984775214",
+    NIF: "8989962224",
+    glasses_supplied: [
+      new ObjectId("200000000000000000000002"),
+      new ObjectId("200000000000000000000006"),
+    ],
+  },
+];
 
 const customers = [
   {
@@ -36,7 +44,7 @@ const customers = [
       {
         date: new Date("2023-01-24"),
         glasses: {
-          _id: new ObjectId(200000000000000000000001),
+          _id: new ObjectId("200000000000000000000001"),
           brand: "RayBan",
           frame_type: "Wire",
           graduation_LR: [2, 1],
@@ -48,8 +56,8 @@ const customers = [
       },
       {
         date: new Date("2022-12-22"),
-        glasses:{
-          _id: new ObjectId(200000000000000000000003),
+        glasses: {
+          _id: new ObjectId("200000000000000000000003"),
           brand: "RayBan",
           frame_type: "Rimless",
           graduation_LR: [2, 1],
@@ -57,8 +65,8 @@ const customers = [
           lense_colour: "none",
           price: 150,
         },
-        sold_by: "Aethelbert"
-      }
+        sold_by: "Aethelbert",
+      },
     ],
   },
   {
@@ -70,18 +78,20 @@ const customers = [
     email: "albalvarez@email.com",
     signup_date: new Date("2022-08-20"),
     purchases: [
-        {date: new Date ("2022-12-27"),
+      {
+        date: new Date("2022-12-27"),
         glasses: {
-          _id: new ObjectId(200000000000000000000002),
+          _id: new ObjectId("200000000000000000000002"),
           brand: "Police",
           frame_type: "Rimless",
           graduation_LR: [1, 1],
           frame_colour: "gold",
           lense_colour: "none",
-          price: 140
+          price: 140,
         },
-        sold_by: "Aethelbert"
-  }]
+        sold_by: "Aethelbert",
+      },
+    ],
   },
   {
     name: "Paula Fernández",
@@ -92,18 +102,19 @@ const customers = [
     email: "paulafernandez@email.com",
     signup_date: new Date("2022-10-12"),
     purchases: [
-      {date: new Date("2023-01-22"),
-      glasses: {
-        _id: new ObjectId(200000000000000000000005),
-        brand: "Sting",
-        frame_type: "Rimless",
-        graduation_LR: [7, 6],
-        frame_colour: "blue",
-        lense_colour: "none",
-        price: 90,
+      {
+        date: new Date("2023-01-22"),
+        glasses: {
+          _id: new ObjectId("200000000000000000000005"),
+          brand: "Sting",
+          frame_type: "Rimless",
+          graduation_LR: [7, 6],
+          frame_colour: "blue",
+          lense_colour: "none",
+          price: 90,
+        },
+        sold_by: "Aethelbert",
       },
-      sold_by: "Aethelbert"
-    }
     ],
   },
   {
@@ -113,20 +124,21 @@ const customers = [
     city: "Barcelona",
     phone_no: "931566648",
     signup_date: new Date("2023-01-09"),
-    purchases: [(
-      {date: new Date ("2023-01-22"),
-      glasses: {
-        _id: new ObjectId(200000000000000000000004),
-        brand: "Sting",
-        frame_type: "thick",
-        graduation_LR: [3, 3],
-        frame_colour: "black",
-        lense_colour: "none",
-        price: 120,
+    purchases: [
+      {
+        date: new Date("2023-01-22"),
+        glasses: {
+          _id: new ObjectId("200000000000000000000004"),
+          brand: "Sting",
+          frame_type: "thick",
+          graduation_LR: [3, 3],
+          frame_colour: "black",
+          lense_colour: "none",
+          price: 120,
+        },
+        sold_by: "Cuthbert",
       },
-      sold_by: "Cuthbert"
-    }
-  ),]
+    ],
   },
   {
     name: "Jordi Coromines",
@@ -137,10 +149,11 @@ const customers = [
     email: "coromines_jordi@email.com",
     signup_date: new Date("2022-07-05"),
     referred_by: 3,
-    purchases: [(
-        {date: new Date("2023-01-29"),
+    purchases: [
+      {
+        date: new Date("2023-01-29"),
         glasses: {
-          _id: new ObjectId(200000000000000000000006),
+          _id: new ObjectId("200000000000000000000006"),
           brand: "Police",
           frame_type: "wire",
           graduation_LR: [6, 5],
@@ -148,37 +161,39 @@ const customers = [
           lense_colour: "none",
           price: 140,
         },
-        sold_by: "Cuthbert"
-      }
-    ),
+        sold_by: "Cuthbert",
+      },
     ],
-  }
+  },
 ];
 
-const addCustomers = async (client, customers) => {
-  await client.db("otpicians").collection("customers").insertMany(customers);
-  console.log("Customers successfully added to database")
-};
+db.customers.insertMany(customers);
+db.suppliers.insertMany(suppliers);
 
-const addSuppliers = async (client, suppliers) => {
-  await client.db("opticians").collection("suppliers").insertMany(suppliers);
-  console.log("Suppliers successfully added to database")
-};
+// const addCustomers = async (client, customers) => {
+//   await client.db("otpicians").collection("customers").insertMany(customers);
+//   console.log("Customers successfully added to database")
+// };
 
-const main = async () => {
-  try {
-    await client.connect();
-    await client.db("admin").command({ ping: 1 });
-    console.log("Connected successfully to server");
-    const databases= await client.db().admin().listDatabases()
-    let opticians_exists = databases.databases.filter((element)=>element.name === "opticians")
-    if (opticians_exists) {
-       await client.db("opticians").dropDatabase();
-    }
-    await addCustomers(client, customers);
-    await addSuppliers(client, suppliers);
-  } finally {
-    await client.close();
-  }
-};
-main().catch(console.dir);
+// const addSuppliers = async (client, suppliers) => {
+//   await client.db("opticians").collection("suppliers").insertMany(suppliers);
+//   console.log("Suppliers successfully added to database")
+// };
+
+// const main = async () => {
+//   try {
+//     await client.connect();
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Connected successfully to server");
+//     const databases= await client.db().admin().listDatabases()
+//     let opticians_exists = databases.databases.filter((element)=>element.name === "opticians")
+//     if (opticians_exists) {
+//        await client.db("opticians").dropDatabase();
+//     }
+//     await addCustomers(client, customers);
+//     await addSuppliers(client, suppliers);
+//   } finally {
+//     await client.close();
+//   }
+// };
+// main().catch(console.dir);

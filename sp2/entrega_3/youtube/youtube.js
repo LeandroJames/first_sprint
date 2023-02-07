@@ -39,7 +39,7 @@ const users = [
     ],
   },
   {
-    _id: new ObjectId(100000000000000000000002),
+    _id: new ObjectId("100000000000000000000002"),
     username: "coletas_pablo",
     password: "PODEMOS",
     email: "piglesiasturrion@universidad.edu",
@@ -49,16 +49,16 @@ const users = [
     postcode: "28031",
     channels: [
       {
-        _id: new ObjectId(300000000000000000000002),
+        _id: new ObjectId("300000000000000000000002"),
         name: "ElTornillo",
         description: "Entrevistas con agenda",
         created_on: new Date("2008-07-05"),
-        contents: [{ _id: new ObjectId(200000000000000000000003) }],
+        contents: [{ _id: new ObjectId("200000000000000000000003") }],
       },
     ],
     videos: [
       {
-        _id: new ObjectId(200000000000000000000003),
+        _id: new ObjectId("200000000000000000000003"),
         name: "Dialéctica Kantiana de la coleta",
         description:
           "Exposición eterna sobre por qué me necesitáis, nunca me equivoqué y me rogaréis que vuelva cuando os deis cuenta de vuestro error",
@@ -71,18 +71,18 @@ const users = [
         tags: ["pelo", "fisolofia", "sancheztraidor"],
         dislikes: [
           {
-            user: new ObjectId(100000000000000000000004),
+            user: new ObjectId("100000000000000000000004"),
             date: new Date("2022-08-09"),
           },
         ],
         comments: [
           {
             content: "Rojo flipao",
-            written_by: { _id: new ObjectId(100000000000000000000003) },
+            written_by: { _id: new ObjectId("100000000000000000000003") },
             date: new Date("2022-08-09"),
             likes: [
               {
-                user: new ObjectId(100000000000000000000004),
+                user: new ObjectId("100000000000000000000004"),
                 date: new Date("2022-08-09"),
               },
             ],
@@ -92,7 +92,7 @@ const users = [
     ],
   },
   {
-    _id: new ObjectId(100000000000000000000003),
+    _id: new ObjectId("100000000000000000000003"),
     username: "aYusItaMaddrizz",
     password: "pecas_el_perro",
     email: "isabelayuso@comunidaddemadrid.es",
@@ -102,7 +102,7 @@ const users = [
     postcode: "28001",
     videos: [
       {
-        _id: new ObjectId(200000000000000000000001),
+        _id: new ObjectId("200000000000000000000001"),
         title: "Yo de pinchos en pandemia",
         description: "Madrid siempre contra el comunismo",
         size: 15687,
@@ -114,13 +114,13 @@ const users = [
         tags: ["canyas", "madrid", "quesejodatuex"],
         likes: [
           {
-            user: new ObjectId(100000000000000000000004),
+            user: new ObjectId("100000000000000000000004"),
             date: new Date("2020-05-22"),
           },
         ],
       },
       {
-        _id: new ObjectId(200000000000000000000004),
+        _id: new ObjectId("200000000000000000000004"),
         title: "España es Madrid",
         description: "Ya lo sabías. Y muerte al comunismo",
         size: 1489,
@@ -132,7 +132,7 @@ const users = [
         tags: ["madrid", "vivaespinya", "iglesiasalahoguera"],
       },
       {
-        _id: new ObjectId(200000000000000000000005),
+        _id: new ObjectId("200000000000000000000005"),
         title: "Mascarillas para todos",
         description:
           "No es corrupción porque las comprara mi hermano, ¡malpensados!",
@@ -146,11 +146,11 @@ const users = [
         comments: [
           {
             content: "¡Ladrona!",
-            written_by: new ObjectId(100000000000000000000002),
+            written_by: new ObjectId("100000000000000000000002"),
             date: new Date("2022-08-09"),
             dislikes: [
               {
-                user: new ObjectId(100000000000000000000004),
+                user: new ObjectId("100000000000000000000004"),
                 date: new Date("2022-08-09"),
               },
             ],
@@ -160,7 +160,7 @@ const users = [
     ],
   },
   {
-    _id: new ObjectId(100000000000000000000004),
+    _id: new ObjectId("100000000000000000000004"),
     username: "pamangoelmio",
     password: "motosmotos",
     email: "isacifu@email.es",
@@ -170,7 +170,7 @@ const users = [
     postcode: "28001",
     videos: [
       {
-        _id: new ObjectId(200000000000000000000002),
+        _id: new ObjectId("200000000000000000000002"),
         name: "Yo y mis cremitas pal pelo",
         description: "Este supermercado es baratísimo",
         size: 190007,
@@ -188,8 +188,8 @@ const users = [
         created_on: new Date("2023-01-27"),
         status: "Public",
         contents: [
-          new ObjectId(200000000000000000000001),
-          new ObjectId(200000000000000000000005),
+          new ObjectId("200000000000000000000001"),
+          new ObjectId("200000000000000000000005"),
         ],
       },
     ],

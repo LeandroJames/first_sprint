@@ -4,31 +4,31 @@
 
 const artists = [
   {
-    _id: new ObjectId(100000000000000000000001),
+    _id: new ObjectId("100000000000000000000001"),
     name: "Charanga",
     picture: "IMG",
-    related_artists: new ObjectId(100000000000000000000003),
+    related_artists: new ObjectId("100000000000000000000003"),
     albums: [
       {
-        _id: new ObjectId(200000000000000000000001),
+        _id: new ObjectId("200000000000000000000001"),
         name: "Éxitos charangueros",
         year: 2011,
         cover: "cover_image",
         songs: [
           {
-            _id: new ObjectId(300000000000000000000001),
+            _id: new ObjectId("300000000000000000000001"),
             name: "Paquito el chocolatero",
             length: 170,
             times_played: 25,
           },
           {
-            _id: new ObjectId(300000000000000000000002),
+            _id: new ObjectId("300000000000000000000002"),
             name: "Pincho de tortilla",
             length: 154,
             times_played: 36,
           },
           {
-            _id: new ObjectId(300000000000000000000002),
+            _id: new ObjectId("300000000000000000000002"),
             name: "Bragas amarillas",
             length: 123,
             times_played: 31,
@@ -36,19 +36,19 @@ const artists = [
         ],
       },
       {
-        _id: new ObjectId(200000000000000000000004),
+        _id: new ObjectId("200000000000000000000004"),
         name: "Más éxitos charangueros",
         year: 2018,
         cover: "cover_image",
         songs: [
           {
-            _id: new ObjectId(300000000000000000000009),
+            _id: new ObjectId("300000000000000000000009"),
             name: "A la pared mi senyor",
             length: 134,
             times_played: 94,
           },
           {
-            _id: new ObjectId(300000000000000000000010),
+            _id: new ObjectId("300000000000000000000010"),
             name: "Me han dicho que te diga",
             length: 154,
             times_played: 123,
@@ -58,30 +58,30 @@ const artists = [
     ],
   },
   {
-    _id: new ObjectId(100000000000000000000002),
+    _id: new ObjectId("100000000000000000000002"),
     name: "Bananarama",
     picture: "IMG",
     albums: [
       {
-        _id: new ObjectId(200000000000000000000002),
+        _id: new ObjectId("200000000000000000000002"),
         name: "Fruity",
         year: 1978,
         cover: "cover_image",
         songs: [
           {
-            _id: new ObjectId(300000000000000000000004),
+            _id: new ObjectId("300000000000000000000004"),
             name: "Blueberries",
             length: 189,
             times_played: 68,
           },
           {
-            _id: new ObjectId(300000000000000000000005),
+            _id: new ObjectId("300000000000000000000005"),
             name: "Plums",
             length: 1210,
             times_played: 24,
           },
           {
-            _id: new ObjectId(300000000000000000000006),
+            _id: new ObjectId("300000000000000000000006"),
             name: "Peaches",
             length: 300,
             times_played: 12,
@@ -91,25 +91,25 @@ const artists = [
     ],
   },
   {
-    _id: new ObjectId(100000000000000000000003),
+    _id: new ObjectId("100000000000000000000003"),
     name: "Covers covers",
     picture: "IMG",
-    related_artists: new ObjectId(100000000000000000000001),
+    related_artists: new ObjectId("100000000000000000000001"),
     albums: [
       {
-        _id: new ObjectId(200000000000000000000003),
+        _id: new ObjectId("200000000000000000000003"),
         name: "Éxitos de ayer y hoy",
         year: 2018,
         cover: "cover_image",
         songs: [
           {
-            _id: new ObjectId(300000000000000000000008),
+            _id: new ObjectId("300000000000000000000008"),
             name: "Highway to hell de los ACDC",
             length: 180,
             times_played: 63,
           },
           {
-            _id: new ObjectId(300000000000000000000007),
+            _id: new ObjectId("300000000000000000000007"),
             name: "Final countdown de los Europe",
             length: 230,
             times_played: 98,
@@ -122,7 +122,7 @@ const artists = [
 
 const users = [
   {
-    _id: new ObjectId(400000000000000000000001),
+    _id: new ObjectId("400000000000000000000001"),
     username: "juani",
     email: "juaniperez@email.com",
     password: "1234",
@@ -137,23 +137,23 @@ const users = [
         created_on: "2023-01-16",
         contents: [
           {
-            song: new ObjectId(300000000000000000000002),
-            added_by: new ObjectId(400000000000000000000001),
+            song: new ObjectId("300000000000000000000002"),
+            added_by: new ObjectId("400000000000000000000001"),
             added_on: new Date("2023-01-16"),
           },
           {
-            song: new ObjectId(300000000000000000000007),
-            added_by: new ObjectId(400000000000000000000001),
+            song: new ObjectId("300000000000000000000007"),
+            added_by: new ObjectId("400000000000000000000001"),
             added_on: new Date("2023-01-16"),
           },
           {
-            song: new ObjectId(300000000000000000000003),
-            added_by: new ObjectId(400000000000000000000001),
+            song: new ObjectId("300000000000000000000003"),
+            added_by: new ObjectId("400000000000000000000001"),
             added_on: new Date("2023-01-16"),
           },
           {
-            song: new ObjectId(300000000000000000000009),
-            added_by: new ObjectId(400000000000000000000001),
+            song: new ObjectId("300000000000000000000009"),
+            added_by: new ObjectId("400000000000000000000001"),
             added_on: new Date("2023-01-22"),
           },
         ],
@@ -162,7 +162,7 @@ const users = [
     ],
   },
   {
-    _id: new ObjectId(400000000000000000000002),
+    _id: new ObjectId("400000000000000000000002"),
     username: "pepe",
     email: "pepevazquez@email.com",
     password: "22345",
@@ -195,12 +195,12 @@ const users = [
     },
     following: [
       {
-        artist: new ObjectId(100000000000000000000002),
+        artist: new ObjectId("100000000000000000000002"),
       },
     ],
   },
   {
-    _id: new ObjectId(400000000000000000000003),
+    _id: new ObjectId("400000000000000000000003"),
     username: "eritreo",
     email: "pacogarcia@email.com",
     password: "5555",
@@ -228,8 +228,8 @@ const users = [
         created_on: new Date("2023-01-16"),
         contents: [
           {
-            song: new ObjectId(300000000000000000000005),
-            added_by: new ObjectId(400000000000000000000003),
+            song: new ObjectId("300000000000000000000005"),
+            added_by: new ObjectId("400000000000000000000003"),
             added_on: new Date("2023-01-28"),
           },
         ],
@@ -237,7 +237,7 @@ const users = [
     ],
   },
   {
-    _id: new ObjectId(400000000000000000000004),
+    _id: new ObjectId("400000000000000000000004"),
     username: "albita",
     email: "albarodriguez@email.com",
     password: "9876",
@@ -265,12 +265,12 @@ const users = [
     },
     favourites: [
       {
-        album: new ObjectId(200000000000000000000002),
+        album: new ObjectId("200000000000000000000002"),
       },
     ],
   },
   {
-    _id: new ObjectId(400000000000000000000005),
+    _id: new ObjectId("400000000000000000000005"),
     username: "pierrot",
     email: "pierrelegrand@email.com",
     password: "7777",
@@ -281,27 +281,28 @@ const users = [
     premium_subscriber: false,
     favourites: [
       {
-        song: new ObjectId(300000000000000000000001),
+        song: new ObjectId("300000000000000000000001"),
       },
       {
-        song: new ObjectId(300000000000000000000009),
+        song: new ObjectId("300000000000000000000009"),
       },
       {
-        song: new ObjectId(300000000000000000000003),
+        song: new ObjectId("300000000000000000000003"),
       },
     ],
     following: [
       {
-        artist: new ObjectId(100000000000000000000003),
+        artist: new ObjectId("100000000000000000000003"),
       },
       {
-        artist: new ObjectId(100000000000000000000001),
+        artist: new ObjectId("100000000000000000000001"),
       },
     ],
   },
 ];
 
 db.artists.insertMany(artists);
+db.users.insertMany(users);
 
 // const addArtists = async (client, artists) => {
 //   await client.db("spotify").collection("artists").insertMany(artists);

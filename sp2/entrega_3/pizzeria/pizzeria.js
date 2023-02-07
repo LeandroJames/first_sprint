@@ -1,24 +1,24 @@
-const { MongoClient, ObjectId } = require("mongodb");
-const uri =
-  "mongodb://localhost:27017";
-const client = new MongoClient(uri);
+// const { MongoClient, ObjectId } = require("mongodb");
+// const uri =
+//   "mongodb://localhost:27017";
+// const client = new MongoClient(uri);
 
 const branches = [
   {
     address: "Salvà 54",
-    postode: 08004,
+    postcode: 08004,
     city: "Barcelona",
     province: "Barcelona",
     employees: [
       {
-        _id: new ObjectId(200000000000000000000001),
+        _id: new ObjectId("200000000000000000000001"),
         name: "Sara Gonçalves",
         id_no: 38954325,
         phone: 678984444,
         position: "Cook",
       },
       {
-        _id: new ObjectId(200000000000000000000002),
+        _id: new ObjectId("200000000000000000000002"),
         name: "Pablo Garciadiego",
         id_no: 12345678,
         phone: 654987321,
@@ -31,11 +31,11 @@ const branches = [
         type: "Delivery",
         order_items: [
           {
-            product: new ObjectId(100000000000000000000003),
+            product: new ObjectId("100000000000000000000003"),
             quantity: 2,
           },
           {
-            product: new ObjectId(100000000000000000000008),
+            product: new ObjectId("100000000000000000000008"),
             quantity: 2,
           },
         ],
@@ -47,7 +47,7 @@ const branches = [
           province: "Barcelona",
           phone_no: 689898970,
         },
-        delivered_by: new ObjectId(200000000000000000000002),
+        delivered_by: new ObjectId("200000000000000000000002"),
         Total: 26,
       },
     ],
@@ -59,14 +59,14 @@ const branches = [
     province: "Barcelona",
     employees: [
       {
-        _id: new ObjectId(200000000000000000000003),
+        _id: new ObjectId("200000000000000000000003"),
         name: "Albert Font",
         id_no: 15667744,
         phone: 698745321,
         position: "Cook",
       },
       {
-        _id: new ObjectId(200000000000000000000004),
+        _id: new ObjectId("200000000000000000000004"),
         name: "Maria Pla",
         id_no: 78945632,
         phone: 674125466,
@@ -79,7 +79,7 @@ const branches = [
         type: "Collect",
         order_items: [
           {
-            product: new ObjectId(100000000000000000000006),
+            product: new ObjectId("100000000000000000000006"),
             quantity: 2,
           },
         ],
@@ -98,15 +98,15 @@ const branches = [
         type: "Delivery",
         order_items: [
           {
-            product: new ObjectId(100000000000000000000005),
+            product: new ObjectId("100000000000000000000005"),
             quantity: 2,
           },
           {
-            product: new ObjectId(100000000000000000000007),
+            product: new ObjectId("100000000000000000000007"),
             quantity: 1,
           },
           {
-            product: new ObjectId(100000000000000000000008),
+            product: new ObjectId("100000000000000000000008"),
             quantity: 3,
           },
         ],
@@ -118,7 +118,7 @@ const branches = [
           province: "Barcelona",
           phone_no: 678981122,
         },
-        delivered_by: new ObjectId(200000000000000000000004),
+        delivered_by: new ObjectId("200000000000000000000004"),
         Total: 29,
       },
     ],
@@ -130,14 +130,14 @@ const branches = [
     province: "Girona",
     employees: [
       {
-        _id: new ObjectId(200000000000000000000005),
+        _id: new ObjectId("200000000000000000000005"),
         name: "Albert Font",
         id_no: 35566774,
         phone: 698745321,
         position: "Cook",
       },
       {
-        _id: new ObjectId(200000000000000000000006),
+        _id: new ObjectId("200000000000000000000006"),
         name: "Maria Garcia",
         id_no: 12344321,
         phone: 688997744,
@@ -150,15 +150,15 @@ const branches = [
         type: "Delivery",
         order_items: [
           {
-            product: new ObjectId(100000000000000000000001),
+            product: new ObjectId("100000000000000000000001"),
             quantity: 3,
           },
           {
-            product: new ObjectId(100000000000000000000002),
+            product: new ObjectId("100000000000000000000002"),
             quantity: 1,
           },
           {
-            product: new ObjectId(100000000000000000000004),
+            product: new ObjectId("100000000000000000000004"),
             quantity: 1,
           },
         ],
@@ -170,7 +170,7 @@ const branches = [
           province: "Girona",
           phone_no: 623475688,
         },
-        delivered_by: new ObjectId(200000000000000000000006),
+        delivered_by: new ObjectId("200000000000000000000006"),
         Total: 46,
       },
     ],
@@ -179,7 +179,7 @@ const branches = [
 
 const products = [
   {
-    _id: new ObjectId(100000000000000000000001),
+    _id: new ObjectId("100000000000000000000001"),
     name: "Margarita",
     description: "Tomato & mozzarella",
     image: "IMG",
@@ -188,7 +188,7 @@ const products = [
     price: 8,
   },
   {
-    _id: new ObjectId(100000000000000000000002),
+    _id: new ObjectId("100000000000000000000002"),
     name: "Diavola",
     description: "Tomato, mozzarella & spicy pepperoni",
     image: "IMG",
@@ -197,7 +197,7 @@ const products = [
     price: 10,
   },
   {
-    _id: new ObjectId(100000000000000000000003),
+    _id: new ObjectId("100000000000000000000003"),
     name: "Romana",
     description: "Tomato, mozzarella, olives & ham",
     image: "IMG",
@@ -206,7 +206,7 @@ const products = [
     price: 11,
   },
   {
-    _id: new ObjectId(100000000000000000000004),
+    _id: new ObjectId("100000000000000000000004"),
     name: "Napoletana",
     description: "Tomato, anchovies, olives & capers",
     image: "IMG",
@@ -215,7 +215,7 @@ const products = [
     price: 11,
   },
   {
-    _id: new ObjectId(100000000000000000000005),
+    _id: new ObjectId("100000000000000000000005"),
     name: "Classic burger",
     description: "Beefburger, cheese, onion, gherkins & ketchup",
     image: "IMG",
@@ -223,7 +223,7 @@ const products = [
     price: 7,
   },
   {
-    _id: new ObjectId(100000000000000000000006),
+    _id: new ObjectId("100000000000000000000006"),
     name: "Nasty burger",
     description: "Classic burger + bacon & fried egg",
     image: "IMG",
@@ -231,7 +231,7 @@ const products = [
     price: 9.5,
   },
   {
-    _id: new ObjectId(100000000000000000000007),
+    _id: new ObjectId("100000000000000000000007"),
     name: "Veggie burger",
     description: "Beanburger, cream cheese, gherkins & beetroot",
     image: "IMG",
@@ -239,7 +239,7 @@ const products = [
     price: 9,
   },
   {
-    _id: new ObjectId(100000000000000000000008),
+    _id: new ObjectId("100000000000000000000008"),
     name: "Coke",
     description: "33cl can",
     image: "IMG",
@@ -247,7 +247,7 @@ const products = [
     price: 2,
   },
   {
-    _id: new ObjectId(100000000000000000000009),
+    _id: new ObjectId("100000000000000000000009"),
     name: "Water",
     description: "50cl bottle",
     image: "IMG",
@@ -256,32 +256,35 @@ const products = [
   },
 ];
 
-const addBranches = async (client, branches) => {
-  await client.db("pizzeria").collection("branches").insertMany(branches);
-  console.log("Branches successfully added to database");
-};
+db.branches.insertMany(branches);
+db.products.insertMany(products);
 
-const addProducts = async (client, products) => {
-  await client.db("pizzeria").collection("products").insertMany(products);
-  console.log("Products successfully added to database");
-};
+// const addBranches = async (client, branches) => {
+//   await client.db("pizzeria").collection("branches").insertMany(branches);
+//   console.log("Branches successfully added to database");
+// };
 
-const main = async () => {
-  try {
-    await client.connect();
-    await client.db("admin").command({ ping: 1 });
-    console.log("Connected successfully to server");
-    const databases = await client.db().admin().listDatabases();
-    let pizzeria_exists = databases.databases.filter(
-      (element) => element.name === "pizzeria"
-    );
-    if (pizzeria_exists) {
-      await client.db("pizzeria").dropDatabase();
-    }
-    await addBranches(client, branches);
-    await addProducts(client, products);
-  } finally {
-    await client.close();
-  }
-};
-main().catch(console.dir);
+// const addProducts = async (client, products) => {
+//   await client.db("pizzeria").collection("products").insertMany(products);
+//   console.log("Products successfully added to database");
+// };
+
+// const main = async () => {
+//   try {
+//     await client.connect();
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Connected successfully to server");
+//     const databases = await client.db().admin().listDatabases();
+//     let pizzeria_exists = databases.databases.filter(
+//       (element) => element.name === "pizzeria"
+//     );
+//     if (pizzeria_exists) {
+//       await client.db("pizzeria").dropDatabase();
+//     }
+//     await addBranches(client, branches);
+//     await addProducts(client, products);
+//   } finally {
+//     await client.close();
+//   }
+// };
+// main().catch(console.dir);
