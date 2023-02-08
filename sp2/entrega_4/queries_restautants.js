@@ -22,8 +22,8 @@
 //db.restaurants.find({borough: {$nin: ["Staten Island", "Queens", "Bronx", "Brooklyn"]}}, {restaurant_id:1, name:1, borough:1, cuisine:1});
 //db.restaurants.find({"grades.score": {$lt: 10}}, {restaurant_id:1, name:1, borough:1, cuisine:1});
 //db.restaurants.find({$or: [{$and: [{cuisine: "Seafood"}, {cuisine: {$nin: [/^American/, "Chinese"]}}]}, {name: /^Wil/}]}, {restaurant_id:1, name:1, borough:1, cuisine:1});
-//db.restaurants.find({grades: {$elemMatch: {date: new Date("2014-08-11T00:00:00Z"), grade: "A", score: 11}}});
-//db.restaurants.find({"grades.1": {date: new Date("2014-08-11T00:00:00Z"), grade: "A", score: 9}});
+// db.restaurants.find({grades: {$elemMatch: {date: new Date("2014-08-11T00:00:00Z"), grade: "A", score: 11}}});
+// db.restaurants.find({"grades.1": {date: new Date("2014-08-11T00:00:00Z"), grade: "A", score: 9}});
 //db.restaurants.find({"address.coord.1": {$lte: 52, $gte: 42}}, {restaurant_id: 1, name: 1, address: 1});
 //db.restaurants.find().sort({name:1});
 //db.restaurants.find().sort({name:-1});
