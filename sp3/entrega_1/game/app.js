@@ -21,6 +21,11 @@ rockPaperScissors.score.win(player1);
 rockPaperScissors.score.win(player2);
 rockPaperScissors.score.win(player1);
 rockPaperScissors.score.lose(player1);
+rockPaperScissors.score.win(player2);
+rockPaperScissors.score.win(player2);
 
 //check player scores
-console.log(rockPaperScissors.players);
+rockPaperScissors.showScore()
+
+//declare winner
+rockPaperScissors.showWinner()
