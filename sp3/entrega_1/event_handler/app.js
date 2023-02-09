@@ -3,23 +3,6 @@ import { User } from "./User.js";
 import EventEmitter from "events";
 export const eventEmitter = new EventEmitter();
 
-
-// class User {
-//   username;
-//   constructor(username) {
-//     this.username = username;
-//   }
-//   sendMessage(topic, message) {
-//     eventEmitter.emit("new_message", this, topic, message);
-//   }
-//   receiveMessage(user, message) {
-//     if (user === this) return;
-//     console.log(
-//       `${this.username} received this message from ${user.username}: ${message}`
-//     );
-//   }
-// }
-
 const messageAll = (subscribers, user, message) => {
   subscribers.forEach((subscriber) => subscriber.receiveMessage(user, message));
 };
