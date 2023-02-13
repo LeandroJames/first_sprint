@@ -16,16 +16,26 @@ rockPaperScissors.addPlayer(player2);
 console.log(rockPaperScissors.players);
 
 //plays a few games
-rockPaperScissors.score.win(player1);
-rockPaperScissors.score.win(player1);
-rockPaperScissors.score.win(player2);
-rockPaperScissors.score.win(player1);
-rockPaperScissors.score.lose(player1);
-rockPaperScissors.score.win(player2);
-rockPaperScissors.score.win(player2);
+player1.win();
+player1.win()
+player2.win()
+player2.win()
+player2.win()
+player2.win()
+player1.lose()
+player1.lose()
+
+//creates different game
+let ludo = new Game()
+ludo.addPlayer(player1)
+ludo.addPlayer(player2)
+
+//plays a few rounds
+
 
 //check player scores
 rockPaperScissors.showScore()
+ludo.showscore()
 
 //declare winner
 rockPaperScissors.showWinner()

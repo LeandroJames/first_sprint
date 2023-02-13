@@ -1,13 +1,22 @@
 export class Score {
+  scores = [];
   constructor() {
     if (typeof Score.instance === "object ") {
       return Score.instance;
     }
   }
-  win(winner) {
-    winner.roundsWon += 1;
+  showScores() {
+    return this.scores;
   }
-  lose(loser) {
-    loser.roundsWon -= 1;
+}
+
+export class Singleton {
+  constructor() {
+    if (!Singleton.instance) {
+      Singleton.instance = new Score();
+    }
+  }
+  getInstance() {
+    return Singleton.instance;
   }
 }
