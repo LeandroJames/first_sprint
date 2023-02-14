@@ -1,7 +1,6 @@
 export class Middleware {
-  some_class;
   constructor(myClass) {
-    this.some_class = myClass;
+    myClass extends this;
   };
   square(number) {
     return number ** 2;

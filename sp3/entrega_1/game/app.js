@@ -1,6 +1,6 @@
 import { Game } from "./game.js";
 import { Player } from "./Player.js";
-import {my_scoreboard, Scoreboard} from "./Scoreboard.js"
+import {my_scoreboard} from "./Scoreboard.js"
 
 //creates two players
 let player1 = new Player("theBeast");
@@ -34,13 +34,18 @@ ludo.addPlayer(player2)
 //plays a few rounds
 ludo.win(player1)
 
-//check player scores
-my_scoreboard.showScores()
+//check all scores
+my_scoreboard.showAllScores()
 
-//try to create a new Scoreboard, which should just repeat the old one
-const new_score = new Scoreboard
-new_score.showScores()
+//check score for specific game
+my_scoreboard.showGameScore(ludo)
 
+//try to create a new Scoreboard, which fails as there is no export of the class
+//const new_score = new Scoreboard
+//new_score.showScores()
 
-//declare winner
-//rockPaperScissors.showWinner()
+//declare winner specific game
+my_scoreboard.showGameWinner(ludo)
+
+//declare winners
+my_scoreboard.showAllWinners()

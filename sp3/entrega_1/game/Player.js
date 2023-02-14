@@ -1,8 +1,8 @@
 export class Player {
     alias;
-    points;
+    //points;
     constructor(alias) {
       this.alias = alias;
-      this.points = 0;
+      //this.points = 0;
     }
   }
