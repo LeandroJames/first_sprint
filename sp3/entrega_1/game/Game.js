@@ -1,16 +1,16 @@
-import { my_scoreboard } from "./Scoreboard.js";
+import { Scoreboard } from "./Scoreboard.js";
 export class Game {
   name;
   players = [];
-  //score;
+  score;
   constructor(name) {
-    //this.score = new Scoreboard()
+    this.score = new Scoreboard()
     this.name = name;
-    my_scoreboard.scores.push({ name: name, players: [] });
+    this.score.scores.push({ name: name, players: [] });
   }
   addPlayer(player) {
     this.players.push(player);
-    const game = my_scoreboard.scores.filter((e) => e.name === this.name);
+    const game = this.score.scores.filter((e) => e.name === this.name);
     game[0].players.push({ alias: player.alias, points: 0 });
     console.log(`${player.alias} added to ${this.name}`);
   }
@@ -21,11 +21,11 @@ export class Game {
 
 
   win(winner) {
-    my_scoreboard.updateScore(winner, this, true);
+    this.score.updateScore(winner, this, true);
     console.log(`${this.name}: ${winner.alias} wins!`);
   }
   lose(loser) {
-    my_scoreboard.updateScore(loser, this, false);
+    this.score.updateScore(loser, this, false);
     console.log(`${this.name}: ${loser.alias} loses!`);
   }
 }

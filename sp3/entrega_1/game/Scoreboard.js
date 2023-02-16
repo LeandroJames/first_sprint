@@ -1,8 +1,7 @@
-class Scoreboard {
+export class Scoreboard {
   scores = [];
   constructor() {
     if (typeof Scoreboard.instance === "object ") {
-      //Object.freeze(this);
       Score.instance = this;
     }
   }
@@ -29,7 +28,6 @@ class Scoreboard {
   showGameScore(game) {
     console.log(`These are the scores for ${game.name}:`);
     const this_game=this.scores.find(scores=> scores.name===game.name)
-    console.log(game.name);
     this_game.players.forEach((player) =>
         console.log(`${player.alias}: ${player.points} points`)
       );
@@ -48,7 +46,7 @@ class Scoreboard {
     };
   }
 
-export const my_scoreboard = new Scoreboard();
+//export const my_scoreboard = new Scoreboard();
 
 // export class Singleton {
 //   constructor() {
