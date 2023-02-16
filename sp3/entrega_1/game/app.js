@@ -1,6 +1,5 @@
 import { Game } from "./game.js";
 import { Player } from "./Player.js";
-//import {my_scoreboard} from "./Scoreboard.js"
 
 //creates two players
 let player1 = new Player("theBeast");
@@ -33,19 +32,16 @@ ludo.addPlayer(player2)
 
 //plays a few rounds
 ludo.win(player1)
+ludo.win(player1)
+ludo.win(player1)
+ludo.win(player2)
 
-//check all scores
-rockPaperScissors.score.showAllScores()
-
-//check score for specific game
-ludo.score.showGameScore(ludo)
-
-//try to create a new Scoreboard, which fails as there is no export of the class
-//const new_score = new Scoreboard
-//new_score.showScores()
+//check score
+ludo.showScore()
+rockPaperScissors.showScore()
 
 //declare winner specific game
-ludo.score.showGameWinner(ludo)
+ludo.showWinner()
 
 //declare winners
-rockPaperScissors.score.showAllWinners()
+rockPaperScissors.showWinner()

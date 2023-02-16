@@ -15,15 +15,15 @@ export class Scoreboard {
     });
   }
 
-  showAllScores() {
-    console.log(`THESE ARE THE SCORES`);
-    this.scores.forEach((game) => {
-      console.log(game.name);
-      game.players.forEach((player) =>
-        console.log(`${player.alias}: ${player.points} points`)
-      );
-    });
-  }
+  // showAllScores() {
+  //   console.log(`THESE ARE THE SCORES`);
+  //   this.scores.forEach((game) => {
+  //     console.log(game.name);
+  //     game.players.forEach((player) =>
+  //       console.log(`${player.alias}: ${player.points} points`)
+  //     );
+  //   });
+  // }
 
   showGameScore(game) {
     console.log(`These are the scores for ${game.name}:`);
@@ -33,28 +33,15 @@ export class Scoreboard {
       );
     };
 
-  showAllWinners() {
-    this.scores.forEach((game) => {
-      game.players.sort((a, b) => b.points - a.points);
-      console.log(`${game.players[0].alias} wins at ${game.name}!`);
-    });
-  }
+  // showAllWinners() {
+  //   this.scores.forEach((game) => {
+  //     game.players.sort((a, b) => b.points - a.points);
+  //     console.log(`${game.players[0].alias} wins at ${game.name}!`);
+  //   });
+  // }
 
   showGameWinner(game) {
       game.players.sort((a, b) => b.points - a.points);
       console.log(`${game.players[0].alias} wins at ${game.name}!`);
     };
   }
-
-//export const my_scoreboard = new Scoreboard();
-
-// export class Singleton {
-//   constructor() {
-//     if (!Singleton.instance) {
-//       Singleton.instance = new Score();
-//     }
-//   }
-//   getInstance() {
-//     return Singleton.instance;
-//   }
-// }

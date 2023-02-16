@@ -4,7 +4,7 @@ export class Game {
   players = [];
   score;
   constructor(name) {
-    this.score = new Scoreboard()
+    this.score = new Scoreboard();
     this.name = name;
     this.score.scores.push({ name: name, players: [] });
   }
@@ -14,12 +14,12 @@ export class Game {
     game[0].players.push({ alias: player.alias, points: 0 });
     console.log(`${player.alias} added to ${this.name}`);
   }
-  // showWinner() {
-  //   this.players.sort((a, b) => b.roundsWon - a.roundsWon);
-  //   console.log(`${this.players[0].alias} is the winner!`);
-  // }
-
-
+  showWinner() {
+    this.score.showGameWinner(this);
+  }
+  showScore() {
+    this.score.showGameScore(this);
+  }
   win(winner) {
     this.score.updateScore(winner, this, true);
     console.log(`${this.name}: ${winner.alias} wins!`);
