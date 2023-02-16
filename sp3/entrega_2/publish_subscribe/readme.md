@@ -6,4 +6,4 @@ npm install amqplib
 Cuando esté, es posible que haga falta ejecutar este comando para que se inicie el programa
 rabbitmqctl.bat start_app
 
-https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html
+Para ver su funcionamiento, primero ejecutar read.js y después publish.js, cada uno en una consola diferente. Al volver a la consola de read.js, aparecerá el mensaje. Para que deje de escuchar, será necesario pulsar CTRL+C.
